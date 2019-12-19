@@ -1,5 +1,7 @@
 package indi.welfare.jobs.aop;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
@@ -13,7 +15,7 @@ import java.lang.reflect.Executable;
 import java.lang.reflect.Type;
 
 @RestControllerAdvice
-public class CustomResponseBodyAdvice implements ResponseBodyAdvice {
+public class CustomResponseBodyAdvice implements ResponseBodyAdvice<Object> {
     @Override
     public boolean supports(MethodParameter returnType, Class converterType) {
         return true;
@@ -24,6 +26,8 @@ public class CustomResponseBodyAdvice implements ResponseBodyAdvice {
         Executable executable = returnType.getExecutable();
         AnnotatedType annotatedReturnType = executable.getAnnotatedReturnType();
         Type type = annotatedReturnType.getType();
-        return JSONObject.parseObject("{\"result\":0}");
+        System.out.println(body);
+        return JSONArray.parseArray(JSON.toJSONString(body));
+//        return JSONObject.parseObject("{\"result\":100}");
     }
 }

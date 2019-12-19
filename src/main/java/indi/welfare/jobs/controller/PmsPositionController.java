@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("pms/position")
 public class PmsPositionController {
@@ -22,6 +24,12 @@ public class PmsPositionController {
     public Page<PmsPosition> listAllPositions() {
 
         return pmsPositionService.findAll(0, 10 );
+    }
+
+    @GetMapping("/listAll")
+    public List<PmsPosition> listAll() {
+
+        return pmsPositionService.findAll(0, 10 ).getContent();
     }
 
 }

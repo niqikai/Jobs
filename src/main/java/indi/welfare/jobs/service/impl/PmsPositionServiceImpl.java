@@ -28,6 +28,7 @@ public class PmsPositionServiceImpl implements PmsPositionService {
     public Page<PmsPosition> findAll(int page, int size) {
         // 根据 createTime 降序排
         return pmsPositionRepository.findAll(
+
                 PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createTime"))
         );
     }
