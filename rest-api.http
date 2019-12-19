@@ -1,0 +1,6 @@
+###
+GET http://localhost:8080/jobs/pms/position/all
+Accept: application/json
+Cache-Control: no-cache
+
+###
