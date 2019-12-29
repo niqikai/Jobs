@@ -21,6 +21,8 @@ public class RmsResume implements Serializable {
 
     private String phoneNumber;
 
+    private String experience;
+
     private Date createTime;
 
 

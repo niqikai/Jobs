@@ -1,10 +1,10 @@
 ###
-GET http://localhost:8080/jobs/pms/position/all
+GET http://localhost:8080/jobs/pms/all?pageNum=0&pageSize=5
 Accept: application/json
 Cache-Control: no-cache
 
 ###
-GET http://localhost:8080/jobs/pms/position/listAll
+GET http://localhost:8080/jobs/pms/all
 Accept: application/json
 Cache-Control: no-cache
 

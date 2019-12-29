@@ -1,5 +1,6 @@
 package indi.welfare.jobs.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.io.Serializable;
