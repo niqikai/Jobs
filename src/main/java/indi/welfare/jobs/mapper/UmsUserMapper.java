@@ -1,6 +1,6 @@
 package indi.welfare.jobs.mapper;
 
-import indi.welfare.jobs.entity.UmsUser;
+import indi.welfare.jobs.dto.UmsUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 

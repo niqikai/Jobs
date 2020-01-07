@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="indi.welfare.jobs.mapper.pms.PmsPositionMapper">
+    <resultMap id="position" type="indi.welfare.jobs.dto.pms.PositionDTO">
+        <association property="city"
+                     select="indi.welfare.jobs.mapper.sys.SysMapper.selectCityById"
+                     column="{id=city_id}"/>
+        <association property="industry"
+                     select="indi.welfare.jobs.mapper.sys.SysMapper.selectDataById"
+                     column="id=industry"/>
+        <association property="positionType"
+                     select="indi.welfare.jobs.mapper.sys.SysMapper.selectDataById"
+                     column="id=position_type"/>
+
+    </resultMap>
+
+
+    <insert id="insertPosition">
+        insert pms_position
+            (job_title, company_name, city_id, job_description, industry, position_type, min_salary, max_salary, creator_id)
+        VALUES (#{positionDTO.jobTitle}, #{positionDTO.companyName}, #{positionDTO.cityId},
+                #{positionDTO.jobDescription}, #{positionDTO.industry}, #{positionDTO.positionType},
+                #{positionDTO.minSalary}, #{positionDTO.maxSalary}, #{userId})
+    </insert>
+
+
+    <select id="selectAll" resultType="indi.welfare.jobs.dto.pms.PositionDTO">
+        select *
+        from pms_position
+        where suspend &lt;&gt; 1 order by create_time desc
+    </select>
+
+    <select id="selectAppliedPositionsByUserId" resultType="indi.welfare.jobs.dto.pms.PositionDTO">
+        select p.*, pap.create_time as pap_time
+        from pms_position p left join pms_applied_position pap
+        on p.id = pap.position_id
+        where pap.user_id = #{userId}
+        order by pap_time Desc
+    </select>
+    <select id="select" resultMap="position" >
+        select * from pms_position where id = #{id}
+    </select>
+
+
+</mapper>

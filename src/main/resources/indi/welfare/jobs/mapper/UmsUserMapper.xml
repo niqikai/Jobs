@@ -3,7 +3,7 @@
 <mapper namespace="indi.welfare.jobs.mapper.UmsUserMapper">
 
 
-    <insert id="insert" parameterType="indi.welfare.jobs.entity.UmsUser">
+    <insert id="insert" parameterType="indi.welfare.jobs.dto.UmsUser">
         insert into ums_user(username, password)
         values( #{username}, #{password})
     </insert>

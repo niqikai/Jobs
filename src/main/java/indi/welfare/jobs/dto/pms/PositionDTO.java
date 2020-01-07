@@ -1,6 +1,7 @@
-package indi.welfare.jobs.entity;
+package indi.welfare.jobs.dto.pms;
 
-import lombok.AllArgsConstructor;
+import indi.welfare.jobs.dto.sys.City;
+import indi.welfare.jobs.dto.sys.DictData;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -8,18 +9,20 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
-public class PmsPosition implements Serializable {
+public class PositionDTO implements Serializable {
     private Integer id;
 
     private String jobTitle;
 
     private String companyName;
+//    private Integer cityId;
+    private City city;
 
-    private Integer cityId;
+    private String jobDescription;
+//    private Integer industryId;
+    private DictData industry;
 
-    private Integer industry;
-
-    private Integer positionType;
+    private DictData positionType;
 
     private BigDecimal minSalary;
 
@@ -31,7 +34,7 @@ public class PmsPosition implements Serializable {
 
     private Date createTime;
 
-    private String jobDescription;
+
 
 
 }

@@ -1,4 +1,4 @@
-package indi.welfare.jobs.entity;
+package indi.welfare.jobs.dto;
 
 import lombok.Data;
 

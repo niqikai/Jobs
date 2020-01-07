@@ -1,6 +1,6 @@
-package indi.welfare.jobs.mapper;
+package indi.welfare.jobs.mapper.pms;
 
-import indi.welfare.jobs.entity.PmsPosition;
+import indi.welfare.jobs.dto.pms.PositionDTO;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -9,14 +9,16 @@ import java.util.List;
 
 public interface PmsPositionMapper {
 
-    List<PmsPosition> selectAll();
+    List<PositionDTO> selectAll();
+
+    PositionDTO select(Integer id);
 
     @Select(" select * from pms_position where creator_id = #{userId} order by create_time desc" )
-    List<PmsPosition> selectPostedPositionsByUserId(int userId);
+    List<PositionDTO> selectPostedPositionsByUserId(int userId);
 
-    List<PmsPosition> selectAppliedPositionsByUserId(int userId);
+    List<PositionDTO> selectAppliedPositionsByUserId(int userId);
 
-    int insertPosition( PmsPosition pmsPosition, int userId);
+    int insertPosition(PositionDTO positionDTO, int userId);
 
     @Insert(" insert into pms_applied_position (position_id, user_id) VALUES (#{positionId}, #{userId}) ")
     int insertAppliedPosition(int positionId, int userId);
